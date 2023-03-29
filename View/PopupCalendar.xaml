@@ -1,0 +1,19 @@
+﻿<UserControl x:Name="dater" x:Class="CalendarApplication.View.PopupCalendar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CalendarApplication.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="150">
+    <Canvas>
+        <TextBlock x:Name="TEXT_DATE" Text="{Binding ElementName=dater,Path=Date,StringFormat={}{0:d}}" MouseUp="TEXT_DATE_MouseUP"/>
+        <Popup x:Name="POPUP_PATH" StaysOpen="False" 
+               Placement="Bottom" PopupAnimation="Slide"
+               PlacementTarget="{Binding ElementName=TEXT_DATE}" >
+            <Grid>
+                <Calendar x:Name="calenrdar" Margin="0,-3,0,-3" SelectedDate="{Binding ElementName=dater,Path=Date,Mode=TwoWay}" SelectedDatesChanged="calenrdar_SelectedDatesChanged"/>
+            </Grid>
+        </Popup>
+    </Canvas>
+</UserControl>
